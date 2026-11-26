@@ -1,0 +1,338 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Little Message For You 💗</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Trebuchet MS', sans-serif;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #ffdce9, #eadfff, #fff0f5);
+    color: #a6537d;
+    overflow-x: hidden;
+    text-align: center;
+}
+
+/* Background */
+.background {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Main */
+.container {
+    position: relative;
+    z-index: 1;
+    width: 90%;
+    max-width: 550px;
+    margin: 0 auto;
+    padding: 55px 0 35px;
+}
+
+h1 {
+    color: #d96c9c;
+    font-size: 36px;
+    margin-bottom: 12px;
+    text-shadow: 2px 3px 5px white;
+}
+
+.subtitle {
+    color: #a97598;
+    margin-bottom: 35px;
+    line-height: 1.7;
+}
+
+/* Card */
+.card {
+    background: rgba(255,255,255,0.8);
+    border: 2px solid white;
+    border-radius: 30px;
+    padding: 35px 22px;
+    box-shadow: 0 12px 35px rgba(205,120,160,0.18);
+}
+
+/* Cat */
+.cat {
+    font-size: 85px;
+    margin: 15px;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+}
+
+/* Envelope */
+.envelope {
+    font-size: 100px;
+    margin: 20px;
+    cursor: pointer;
+    display: inline-block;
+    transition: 0.4s;
+    animation: pulse 2s infinite;
+}
+
+.envelope:hover {
+    transform: scale(1.15) rotate(-5deg);
+}
+
+@keyframes pulse {
+    50% { transform: scale(1.08); }
+}
+
+/* Button */
+button {
+    background: linear-gradient(135deg, #f5a1c3, #d98abb);
+    color: white;
+    border: 2px solid white;
+    padding: 14px 28px;
+    border-radius: 30px;
+    font-size: 15px;
+    cursor: pointer;
+    margin: 10px;
+    transition: 0.3s;
+    box-shadow: 0 5px 12px #d98abb55;
+}
+
+button:hover {
+    transform: translateY(-4px);
+    filter: brightness(1.05);
+}
+
+/* Letter */
+#letter {
+    display: none;
+    background: #fff3f8;
+    border: 2px dashed #edabc9;
+    border-radius: 22px;
+    padding: 25px 20px;
+    margin-top: 25px;
+    line-height: 1.9;
+    animation: appear 1s ease;
+}
+
+#letter h2 {
+    color: #d96c9c;
+    margin-bottom: 18px;
+}
+
+#letter p {
+    margin: 12px 0;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Falling hearts */
+.heart {
+    position: fixed;
+    top: -30px;
+    pointer-events: none;
+    animation: fall linear forwards;
+    z-index: 3;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+footer {
+    margin-top: 30px;
+    font-size: 13px;
+    color: #bd82a1;
+}
+
+/* Mobile */
+@media(max-width: 500px) {
+    h1 { font-size: 28px; }
+    .card { padding: 25px 15px; }
+    .envelope { font-size: 80px; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="background"></div>
+
+<div class="container">
+
+    <h1>For Someone Special 💗</h1>
+
+    <p class="subtitle">
+        I made something little for you...
+        <br>
+        Hope you like it! 🌷
+    </p>
+
+    <div class="card">
+
+        <div class="cat">🐱</div>
+
+        <h2>Hello, You! 🎀</h2>
+
+        <p style="margin-top:12px; line-height:1.8;">
+            There is a little message waiting for you.
+            <br>
+            Are you curious? ♡
+        </p>
+
+        <div class="envelope" onclick="openLetter()">
+            💌
+        </div>
+
+        <p>Tap the envelope to open it!</p>
+
+        <button onclick="openLetter()">
+            Open My Letter ♡
+        </button>
+
+        <div id="letter">
+
+            <h2>Dear Someone Special 🌷</h2>
+
+            <p>
+                I don't know how to put everything
+                into words, but I just want you to know
+                something.
+            </p>
+
+            <p>
+                You deserve beautiful things,
+                happy moments, and endless reasons
+                to smile.
+            </p>
+
+            <p>
+                I hope life treats you kindly,
+                just like flowers blooming
+                under the sunshine. 🌸
+            </p>
+
+            <p>
+                Thank you for being you.
+                Never forget how wonderful you are!
+            </p>
+
+            <h2>With Love, 💗</h2>
+
+            <p>Someone who made this little website ♡</p>
+
+            <button onclick="closeLetter()">
+                Close Letter 💌
+            </button>
+
+        </div>
+
+    </div>
+
+    <footer>
+        Made with love, flowers and little wishes ✨
+        <br>
+        © My Little Website
+    </footer>
+
+</div>
+
+<script>
+
+// OPEN LETTER
+function openLetter() {
+
+    const letter = document.getElementById("letter");
+
+    letter.style.display = "block";
+
+    letter.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
+
+    createHearts();
+}
+
+// CLOSE LETTER
+function closeLetter() {
+
+    document.getElementById("letter").style.display = "none";
+
+}
+
+// HEART ANIMATION
+function createHearts() {
+
+    const symbols = ["💗", "💕", "💖", "🌸", "✨"];
+
+    for (let i = 0; i < 18; i++) {
+
+        const heart = document.createElement("div");
+
+        heart.className = "heart";
+
+        heart.innerHTML =
+            symbols[Math.floor(Math.random() * symbols.length)];
+
+        heart.style.left = Math.random() * 100 + "vw";
+
+        heart.style.fontSize =
+            (15 + Math.random() * 20) + "px";
+
+        heart.style.animationDuration =
+            (3 + Math.random() * 4) + "s";
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 7500);
+    }
+}
+
+// BACKGROUND DECORATION
+setInterval(() => {
+
+    const heart = document.createElement("div");
+
+    heart.className = "heart";
+    heart.innerHTML = "♡";
+
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.color = "#ed91b8";
+    heart.style.fontSize = "20px";
+    heart.style.animationDuration = "6s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 6000);
+
+}, 1200);
+
+</script>
+
+</body>
+</html>
